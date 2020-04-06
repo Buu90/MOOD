@@ -1,5 +1,4 @@
 "use strict";
-
 function randomDiap(n, m) {
   return Math.floor(Math.random() * (m - n + 1)) + n;
 }
@@ -13,14 +12,21 @@ function mood(colorsCount) {
     "зелёный",
     "голубой",
     "синий",
-    "фиолетовый"
+    "фиолетовый",
   ];
+  var color = {};
 
   console.log("цветов: " + colorsCount);
-  for (var i = 1; i <= colorsCount; i++) {
-    var n = randomDiap(1, colors.length - 1);
-    var colorName = colors.splice(n, 1)[0];
-    console.log(colorName);
+  for (var i = 1; i <= colorsCount; ) {
+    var n = randomDiap(1, 7);
+    var colorName = colors[n];
+    if (colorName in color) {
+      continue;
+    } else {
+      color[colorName] = colorName;
+    }
+    console.log(color[colorName]);
+    i++;
   }
 }
 
